@@ -1,11 +1,21 @@
-import createUIElement from "../utils/createUIElement";
+import { createLink } from "./createLink";
+import { createTodo } from "./createTodoList";
 
-export const listInput = () => {
-    const input = createUIElement("input", {
-        type: "text",
-        id: "newListInput",
-        name: "newListInput",
-        class: "input new-list-input",
+const listsDiv = document.querySelector(".lists");
+const addListButton = document.querySelector(".add-list");
+const todosDiv = document.querySelector(".todos");
+
+export const updateSidebarLinks = (lists) => {
+    listsDiv.textContent = "";
+    lists.map((list) => {
+        listsDiv.appendChild(createLink(list));
     });
-    return input;
+    addListButton.classList.remove("hide");
+}
+
+export const updateTodoList = (activeList) => {
+    todosDiv.textContent = "";
+    activeList.todos.map((todo) => {
+        todosDiv.appendChild(createTodo(todo));
+    })
 }

@@ -12,7 +12,6 @@ export const createTodo = (todo) => {
         event: "click",
         eventFunction: () => {
             todo.completed = !todo.completed;
-            console.log(todo);
         },
     });
     const todoText = createUIElement("span", {

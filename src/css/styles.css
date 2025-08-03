@@ -36,3 +36,7 @@ li {
 .main {
     grid-column: 3 / 13;
 }
+
+.editable {
+    border: 1px solid blue;
+}
