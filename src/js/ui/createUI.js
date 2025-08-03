@@ -1,5 +1,5 @@
 import { createLink } from "./createLink";
-import { createTodo } from "./createTodoList";
+import { createTodo } from "./createTodo";
 
 const listsDiv = document.querySelector(".lists");
 const addListButton = document.querySelector(".add-list");

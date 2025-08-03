@@ -1,12 +1,9 @@
-const createUIElement = (tag = "div", attributes = {}, children = [], eventListener = {}) => {
+const createUIElement = (tag = "div", attributes = {}, children = []) => {
     const elem = document.createElement(tag);
     Object.entries(attributes).forEach(([key, value]) => {
         if (key in elem) elem[key] = value;
         else elem.setAttribute(key,value);
     });
-    if (eventListener) {
-        elem.addEventListener(eventListener.event, eventListener.eventFunction);
-    }
     if (children) children.map((childElem) => elem.appendChild(childElem))
     return elem;
 }

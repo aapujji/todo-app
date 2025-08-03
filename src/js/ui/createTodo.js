@@ -6,13 +6,6 @@ export const createTodo = (todo) => {
         class: "todo-checkbox",
         id: "todoCheckbox",
         name: "todoCheckbox",
-    },
-    [],
-    {
-        event: "click",
-        eventFunction: () => {
-            todo.completed = !todo.completed;
-        },
     });
     const todoText = createUIElement("span", {
         class: "todo-text",

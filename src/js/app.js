@@ -24,6 +24,10 @@ document.addEventListener("click", (e) => {
     } else if (classList.contains("list-link")) {
         activeList = lists.find((list) => { return list.id === e.target.dataset.uuid});
         updateTodoList(activeList);
+    } else if (classList.contains("todo-checkbox")) {
+        const todo = activeList.todos.find((item) => { return item.id === e.target.closest(".todo").dataset.uuid });
+        todo.completed = !todo.completed;
+        console.log(todo.completed);
     }
 });
 

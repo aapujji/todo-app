@@ -1,21 +1,37 @@
 :root {
+    --black: #2e2e2e;
     --white: #ffffff;
-    --lightgrey: #f1f1f1;
+    --lightgrey: #fafafa;
+    --medlightgrey: #f1f1f1;
+    --darkgrey: #949494;
 }
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: "Poppins", Helvetica, Arial, system-ui, sans-serif;
 }
 
 body {
     background-color: var(--white);
+    color: var(--black);
 }
 
 ul,
 li {
     list-style-type: none;
+}
+
+button {
+    border: 0;
+    cursor: pointer;
+}
+
+input[type=checkbox] {
+    width: 18px;
+    aspect-ratio: 1 / 1;
+    border-radius: 6px;
 }
 
 .hide {
@@ -31,12 +47,69 @@ li {
 .sidebar {
     background-color: var(--lightgrey);
     grid-column: 1 / 3;
+    padding: 1rem 0;
+    display: flex;
+    font-size: 0.875rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    ul,
+    li,
+    button {
+        width: 100%;
+        text-align: left;
+    }
+
+    button {
+        padding: 0.5rem 1rem;
+        background-color: var(--lightgrey);
+
+        &.active {
+            background-color: var(--medlightgrey);
+        }
+
+        &:hover {
+            background-color: var(--medlightgrey);
+        }
+
+        &.add-list {
+            color: var(--darkgrey);
+        }
+    }
 }
 
-.main {
+.main-content {
     grid-column: 3 / 13;
+    padding: 1rem;
 }
 
 .editable {
-    border: 1px solid blue;
+    padding: 0.2rem;
+    padding-left: 1.625rem;
+    /* border: 1px solid black; */
+
+    &:empty {
+        &:before {
+            content: attr(data-placeholder);
+            color: var(--darkgrey);
+            cursor: text;
+        }
+    }
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.todo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+
+    &.complete {
+        color: var(--darkgrey);
+        text-decoration: line-through;
+    }
 }
