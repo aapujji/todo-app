@@ -6,7 +6,7 @@ import '../css/styles.css';
 
 const lists = [];
 const defaultList = todoList("Today", []);
-const exampleTodo = todo("This is an example todo");
+const exampleTodo = todo("This is an example todo", "This is the todo description");
 defaultList.addTodo(exampleTodo);
 lists.push(defaultList);
 let activeList = lists[0];
@@ -15,6 +15,11 @@ updateSidebarLinks(lists);
 updateTodoList(activeList);
 
 const sidebar = document.querySelector(".sidebar");
+
+const findTodo = (uuid) => {
+    const todo = activeList.todos.find((item) => item.id === uuid);
+    return todo;
+}
 
 document.addEventListener("click", (e) => {
     const classList = e.target.classList;
@@ -25,14 +30,14 @@ document.addEventListener("click", (e) => {
         activeList = lists.find((list) => { return list.id === e.target.dataset.uuid});
         updateTodoList(activeList);
     } else if (classList.contains("todo-checkbox")) {
-        const todo = activeList.todos.find((item) => { return item.id === e.target.closest(".todo").dataset.uuid });
+        const todo = findTodo(e.target.closest(".todo").dataset.uuid);
         todo.completed = !todo.completed;
         const todoSpan = e.target.nextElementSibling;
         todoSpan.classList.toggle("complete");
     } else if (classList.contains("edit-button")) {
         console.log(e.target);
     } else if (classList.contains("delete-button")) {
-        const todo = activeList.todos.find((item) => { return item.id === e.target.closest(".todo").dataset.uuid });
+        const todo = findTodo(e.target.closest(".todo").dataset.uuid);
         activeList.removeTodo(todo);
         updateTodoList(activeList);
     }

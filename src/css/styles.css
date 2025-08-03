@@ -4,11 +4,15 @@
     --lightgrey: #fafafa;
     --medlightgrey: #f1f1f1;
     --darkgrey: #949494;
+    --yellow: #C78F57;
+    --red: #B54754;
+    --blue: #85ABAB;
 }
 
 * {
     padding: 0;
     margin: 0;
+    line-height: 1.5;
     box-sizing: border-box;
     font-family: "Poppins", Helvetica, Arial, system-ui, sans-serif;
 }
@@ -45,7 +49,8 @@ input[type=text] {
     font-size: 1rem;
 
     &::placeholder {
-        font-size: 0.8875rem;
+        font-size: 0.875rem;
+        color: var(--darkgrey);
     }
 }
 
@@ -53,6 +58,10 @@ input[type=checkbox] {
     width: 18px;
     aspect-ratio: 1 / 1;
     border-radius: 6px;
+
+    &::placeholder {
+        color: var(--darkgrey);
+    }
 }
 
 .hide {
@@ -114,7 +123,6 @@ input[type=checkbox] {
 .todo-input {
     padding: 0.2rem;
     padding-left: 1.625rem;
-    /* border: 1px solid black; */
 
     &:focus {
         outline: 0;
@@ -123,7 +131,7 @@ input[type=checkbox] {
 
 .todo {
     display: flex;
-    align-items: center;
+    align-items: baseline;
     gap: 0.5rem;
     margin-bottom: 1rem;
 
@@ -135,10 +143,31 @@ input[type=checkbox] {
         }
     }
 
-    .todo-text {
+    .todo-title {
+        font-weight: 400;
         &.complete {
             color: var(--darkgrey);
             text-decoration: line-through;
+        }
+    }
+
+    .todo-desc {
+        font-size: 0.875rem;
+        color: var(--darkgrey);   
+    }
+
+    .todo-priority {
+        padding: 0.2rem;
+        &.low {
+            background-color: var(--blue);
+        }
+
+        &.medium {
+            background-color: var(--yellow);
+        }
+
+        &.high {
+            background-color: var(--red);
         }
     }
 
@@ -149,7 +178,7 @@ input[type=checkbox] {
         transition: all ease-in 0.2s;;
         display: flex;
         gap: 0.3rem;
-        
+
         .delete-button {
             background-image: url("../images/delete.svg");
         }
