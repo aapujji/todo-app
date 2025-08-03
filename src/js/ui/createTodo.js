@@ -11,6 +11,18 @@ export const createTodo = (todo) => {
         class: "todo-text",
         textContent: todo.title,
     });
+    const todoDeleteButton = createUIElement("button", {
+        class: "button icon-button delete-button",
+    });
+    const todoEditButton = createUIElement("button", {
+        class: "button icon-button edit-button",
+    });
+    const todoActionsDiv = createUIElement("div", {
+        class: "todo-actions",
+    }, [
+        todoDeleteButton,
+        todoEditButton,
+    ]);
     const todoListItem = createUIElement("li", {
         class: "todo",
         "data-uuid": todo.id,
@@ -18,6 +30,7 @@ export const createTodo = (todo) => {
     [
         todoInput,
         todoText,
+        todoActionsDiv,
     ]);
     return todoListItem;
 };

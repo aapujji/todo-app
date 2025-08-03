@@ -27,7 +27,14 @@ document.addEventListener("click", (e) => {
     } else if (classList.contains("todo-checkbox")) {
         const todo = activeList.todos.find((item) => { return item.id === e.target.closest(".todo").dataset.uuid });
         todo.completed = !todo.completed;
-        console.log(todo.completed);
+        const todoSpan = e.target.nextElementSibling;
+        todoSpan.classList.toggle("complete");
+    } else if (classList.contains("edit-button")) {
+        console.log(e.target);
+    } else if (classList.contains("delete-button")) {
+        const todo = activeList.todos.find((item) => { return item.id === e.target.closest(".todo").dataset.uuid });
+        activeList.removeTodo(todo);
+        updateTodoList(activeList);
     }
 });
 
@@ -43,9 +50,9 @@ document.addEventListener("keypress", (e) => {
             updateSidebarLinks(lists);
             updateTodoList(activeList);
         } else if (target.classList.contains("todo-input")) {
-            activeList.todos.push(todo(e.target.textContent));
+            activeList.todos.push(todo(e.target.value));
             updateTodoList(activeList);
-            e.target.textContent = "";
+            e.target.value = "";
         }
     }
 });
