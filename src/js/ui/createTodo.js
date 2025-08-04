@@ -1,6 +1,5 @@
 import createUIElement from "../utils/createUIElement";
-
-const priorities = ["low", "medium", "high"];
+import { actionsDropdown } from "./actionsDropdownUI";
 
 export const createTodo = (todo) => {
     const todoInput = createUIElement("input", {
@@ -19,10 +18,10 @@ export const createTodo = (todo) => {
         textContent: todo.description,
     });
     let todoPriorityClasses = "todo-priority";
-    todoPriorityClasses += ` ${(priorities[todo.priority])}`;
+    todoPriorityClasses += ` ${(todo.priority)}`;
     const todoPriority = createUIElement("p", {
         class: todoPriorityClasses,
-        textContent: priorities[todo.priority],
+        textContent: todo.priority,
     });
     const todoTextDiv = createUIElement("div", {
         class: "todo-text",
@@ -32,18 +31,16 @@ export const createTodo = (todo) => {
         todoPriority,
     ]);
 
-    const todoDeleteButton = createUIElement("button", {
-        class: "button icon-button delete-button",
-    });
-    const todoEditButton = createUIElement("button", {
-        class: "button icon-button edit-button",
+    const todoActionsButton = createUIElement("button", {
+        class: "button icon-button actions-button",
     });
     const todoActionsDiv = createUIElement("div", {
         class: "todo-actions",
     }, [
-        todoDeleteButton,
-        todoEditButton,
+        todoActionsButton,
     ]);
+
+    const actions = actionsDropdown();
 
     const todoListItem = createUIElement("li", {
         class: "todo",
@@ -53,6 +50,7 @@ export const createTodo = (todo) => {
         todoInput,
         todoTextDiv,
         todoActionsDiv,
+        actions,
     ]);
     return todoListItem;
 };

@@ -1,4 +1,4 @@
-const todo = (title, description = "", completed = false, dueDate = false, priority = 0) => {
+const todo = (title, description = "", completed = false, dueDate = false, priority = "low") => {
     const id = crypto.randomUUID();
 
     let todo = {};

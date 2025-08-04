@@ -18,9 +18,35 @@
             <section class="todos-section">
                 <h2 class="list-title"></h2>
                 <ul class="todos"></ul>
-                <input type="text" class="todo-input" placeholder="Type todo here, hit Enter to save">
+                <input type="text" class="todo-input seamless" placeholder="Type todo here, hit Enter to save" id="newTodo" name="newTodo">
             </section>
-            <aside class="edit-todo"></aside>
+            <div class="edit-todo hide">
+                <form class="form">
+                    <h3>Edit Todo</h3>
+                    <div class="field">
+                        <label class="label" for="todoTitle">Title</label>
+                        <input type="text" class="input" id="todoTitle" name="todoTitle">
+                    </div>
+                    <div class="field">
+                        <label class="label" for="todoDescription">Description</label>
+                        <textarea class="textarea" name="todoDescription" id="todoDescription"></textarea>
+                    </div>
+                    <div class="field">
+                        <label class="label" for="">Due Date</label>
+                        <input type="datetime-local" class="input" id="todoDueDate" name="todoDueDate">
+                    </div>
+                    <div class="field">
+                        <label class="label" for="todoPriority">Priority</label>
+                        <select class="select" name="todoPriority" id="todoPriority">
+                            <option class="option" vlaue="">- Select -</option>
+                            <option class="option" value="low">Low</option>
+                            <option class="option" value="medium">Medium</option>
+                            <option class="option" value="high">High</option>
+                        </select>
+                    </div>
+                    <button type="button" class="button save-todo">Save</button>
+                </form>
+            </div>
         </main>
     </div>
 </body>

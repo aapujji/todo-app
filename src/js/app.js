@@ -15,6 +15,11 @@ updateSidebarLinks(lists);
 updateTodoList(activeList);
 
 const sidebar = document.querySelector(".sidebar");
+const editTodo = document.querySelector(".edit-todo");
+const todoTitle = editTodo.querySelector("#todoTitle");
+const todoDescription = editTodo.querySelector("#todoDescription");
+const todoDueDate = editTodo.querySelector("#todoDueDate");
+const todoPriorityOptions = editTodo.querySelector("#todoPriority").querySelectorAll(".option");
 
 const findTodo = (uuid) => {
     const todo = activeList.todos.find((item) => item.id === uuid);
@@ -34,12 +39,25 @@ document.addEventListener("click", (e) => {
         todo.completed = !todo.completed;
         const todoSpan = e.target.nextElementSibling;
         todoSpan.classList.toggle("complete");
-    } else if (classList.contains("edit-button")) {
-        console.log(e.target);
-    } else if (classList.contains("delete-button")) {
+    } else if (classList.contains("actions-button")) {
+        console.log(e.target.closest(".todo").querySelector(".actions-container").classList);
+        e.target.closest(".todo").querySelector(".actions-container").classList.toggle("hide");
+    } else if (classList.contains("delete")) {
+        console.log('test');
         const todo = findTodo(e.target.closest(".todo").dataset.uuid);
         activeList.removeTodo(todo);
         updateTodoList(activeList);
+    } else if (classList.contains("edit")) {
+        const todo = findTodo(e.target.closest(".todo").dataset.uuid);
+        todoTitle.value = todo.title;
+        todoDescription.value = todo.description;
+        if (todo.dueDate) todoDueDate.value = todo.dueDate;
+        todoPriorityOptions.forEach((option) => {
+            option.selected = option.value === todo.priority;
+        });
+        editTodo.classList.remove("hide");
+    } else if (classList.contains(".save-todo")) {
+
     }
 });
 
