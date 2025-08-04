@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import todo from "../modules/todo.js";
 import todoList from "../modules/todolist.js";
 import { lists } from "../default.js";
@@ -8,13 +9,16 @@ import { listsDiv,
     listH2, 
     sidebar, 
     editTodo, 
+    editTodoForm,
     todoTitle, 
     todoDescription, 
     todoDueDate, 
     todoPriorityOptions,
+    detailViewDiv,
     createLink,
     createTodo,
     listInput,
+    createTodoDetailView,
 } from "./dom.js";
 
 const getClosestTodo = (elem) => {
@@ -70,9 +74,10 @@ const handleDeleteTodo = (target) => {
 const handleEditTodo = (target) => {
     const activeList = getActiveList();
     const todo = activeList.findTodo(getClosestTodo(target).dataset.uuid);
+    editTodoForm.dataset.uuid = todo.id;
     todoTitle.value = todo.title;
     todoDescription.value = todo.description;
-    if (todo.dueDate) todoDueDate.value = todo.dueDate;
+    if (todo.dueDate) todoDueDate.value = format(new Date(todo.dueDate), "yyyy-MM-dd");
     todoPriorityOptions.forEach((option) => {
         option.selected = option.value === todo.priority;
     });
@@ -80,7 +85,13 @@ const handleEditTodo = (target) => {
 }
 
 const handleSaveTodoForm = (target) => {
-    console.log(target);
+    const activeList = getActiveList();
+    const todo = activeList.findTodo(target.closest(".form").dataset.uuid);
+    if (todo.title !== todoTitle.value) todo.title = todoTitle.value;
+    if (todo.description !== todoDescription.value) todo.description = todoDescription.value;
+    if (todo.dueDate !== todoDueDate.value) todo.dueDate = todoDueDate.value;
+    updateTodoList(activeList);
+    editTodo.classList.add("hide");
 }
 
 const handleNewTodoList = (target) => {
@@ -100,6 +111,13 @@ const handleNewTodo = (target) => {
     target.value = "";
 }
 
+const handleViewTodo = (target) => {
+    const activeList = getActiveList();
+    const todo = activeList.findTodo(getClosestTodo(target).dataset.uuid);
+    createTodoDetailView(todo);
+    detailViewDiv.classList.toggle("hide");
+}
+
 document.addEventListener("click", (e) => {
     const target = e.target;
     if (target.matches(".add-list")) {
@@ -115,7 +133,9 @@ document.addEventListener("click", (e) => {
     } else if (target.matches(".edit")) {
         handleEditTodo(target);
     } else if (target.matches(".save-todo")) {
-        handleSaveTodoForm();
+        handleSaveTodoForm(target);
+    } else if (target.matches(".todo-text, .todo-title, .todo-desc")) {
+            handleViewTodo(target);
     }
 });
 

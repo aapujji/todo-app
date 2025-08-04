@@ -17,18 +17,18 @@ export const createTodo = (todo) => {
         class: "todo-desc",
         textContent: todo.description,
     });
-    let todoPriorityClasses = "todo-priority";
-    todoPriorityClasses += ` ${(todo.priority)}`;
-    const todoPriority = createUIElement("p", {
-        class: todoPriorityClasses,
-        textContent: todo.priority,
-    });
+    // let todoPriorityClasses = "todo-priority";
+    // todoPriorityClasses += ` ${(todo.priority)}`;
+    // const todoPriority = createUIElement("p", {
+    //     class: todoPriorityClasses,
+    //     textContent: todo.priority,
+    // });
     const todoTextDiv = createUIElement("div", {
         class: "todo-text",
     }, [
         todoTitle,
         todoDescription,
-        todoPriority,
+        // todoPriority,
     ]);
 
     const todoActionsButton = createUIElement("button", {

@@ -1,4 +1,6 @@
-const todo = (title, description = "", completed = false, dueDate = false, priority = "low") => {
+import { format } from "date-fns";
+
+const todo = (title, description = "", completed = false, dueDate, priority = "low") => {
     const id = crypto.randomUUID();
 
     let todo = {};
@@ -6,7 +8,7 @@ const todo = (title, description = "", completed = false, dueDate = false, prior
     todo.title = title;
     todo.description = description;
     todo.completed = completed;
-    todo.dueDate = dueDate;
+    todo.dueDate = dueDate ? format(dueDate, "MM/dd/yyyy") : format(new Date(), "MM/dd/yyyy");
     todo.priority = priority;
 
     return todo;

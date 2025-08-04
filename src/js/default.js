@@ -2,7 +2,6 @@ import todoList from "./modules/todolist.js";
 import todo from "./modules/todo.js";
 import { updateSidebarLinks, updateTodoList } from "./components/events.js";
 import { getActiveList, setActiveList } from "./modules/activeList.js";
-import '../css/styles.css';
 
 const lists = [];
 

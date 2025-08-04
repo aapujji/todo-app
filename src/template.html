@@ -20,6 +20,7 @@
                 <ul class="todos"></ul>
                 <input type="text" class="todo-input seamless" placeholder="Type todo here, hit Enter to save" id="newTodo" name="newTodo">
             </section>
+            <div class="view-todo hide modal"></div>
             <div class="edit-todo hide">
                 <form class="form">
                     <h3>Edit Todo</h3>
@@ -33,7 +34,7 @@
                     </div>
                     <div class="field">
                         <label class="label" for="">Due Date</label>
-                        <input type="datetime-local" class="input" id="todoDueDate" name="todoDueDate">
+                        <input type="date" class="input" id="todoDueDate" name="todoDueDate">
                     </div>
                     <div class="field">
                         <label class="label" for="todoPriority">Priority</label>
@@ -49,5 +50,6 @@
             </div>
         </main>
     </div>
+    <div class="modal-backdrop"></div>
 </body>
 </html>
