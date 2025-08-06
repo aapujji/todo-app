@@ -14,7 +14,7 @@ This project is part of The Odin Project.
 
 ## Links
 
-- [Live preview](https://aapujji.github.io/calc)
+- [Live preview](https://aapujji.github.io/todo-app)
 - [The Odin Project](https://www.theodinproject.com/)
 
 ## Install
