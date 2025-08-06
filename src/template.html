@@ -1,55 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700;1,900&display=swap" rel="stylesheet">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        <aside class="sidebar">
-            <ul class="lists"></ul>
-            <button type="button" class="button add-list">+ Create new list</button>
-        </aside>
-        <main class="main-content">
-            <section class="todos-section">
-                <h2 class="list-title"></h2>
-                <ul class="todos"></ul>
-                <input type="text" class="todo-input seamless" placeholder="Type todo here, hit Enter to save" id="newTodo" name="newTodo">
-            </section>
-            <div class="view-todo hide modal"></div>
-            <div class="edit-todo hide">
-                <form class="form">
-                    <h3>Edit Todo</h3>
-                    <div class="field">
-                        <label class="label" for="todoTitle">Title</label>
-                        <input type="text" class="input" id="todoTitle" name="todoTitle">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700;1,900&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="container" class="container">
+            <aside id="sidebar" class="sidebar">
+                <ul class="projects">
+
+                </ul>
+                <button id="addProject" type="button" class="add-project button transparent">+ Create new list</button>
+            </aside>
+            <main id="main" class="main-content">
+                <section class="todos-section">
+                    <h2 class="project-title"></h2>
+                    <ul class="todos"></ul>
+                    <input type="text" class="input seamless" placeholder="Type todo here, hit Enter to save" id="todoInput" name="todoInput">
+                </section>
+            </main>
+            <div id="modalBackdrop" class="modal-backdrop hidden">
+                <div id="todoDetails" class="modal">
+                    <div class="modal-header">
+                        <button type="button" class="button icon-button icon-close close-modal">
+                            <img class="icon close-modal" src="./images/xmark.svg" alt="close modal">
+                        </button>
                     </div>
-                    <div class="field">
-                        <label class="label" for="todoDescription">Description</label>
-                        <textarea class="textarea" name="todoDescription" id="todoDescription"></textarea>
+                    <div class="modal-todo-details">
+                        <h3 id="modalTodoTitle"></h3>
+                        <p id="modalTodoDesc"></p>
+                        <p id="modalTodoPriority"></p>
+                        <p id="modalTodoDueDate"></p>
+                        <p id="modalTodoProject"></p>
                     </div>
-                    <div class="field">
-                        <label class="label" for="">Due Date</label>
-                        <input type="date" class="input" id="todoDueDate" name="todoDueDate">
-                    </div>
-                    <div class="field">
-                        <label class="label" for="todoPriority">Priority</label>
-                        <select class="select" name="todoPriority" id="todoPriority">
-                            <option class="option" vlaue="">- Select -</option>
-                            <option class="option" value="low">Low</option>
-                            <option class="option" value="medium">Medium</option>
-                            <option class="option" value="high">High</option>
-                        </select>
-                    </div>
-                    <button type="button" class="button save-todo">Save</button>
-                </form>
+                </div>
             </div>
-        </main>
-    </div>
-    <div class="modal-backdrop"></div>
-</body>
+        </div>
+    </body>
 </html>

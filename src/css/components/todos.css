@@ -1,0 +1,94 @@
+.todos-section {
+    grid-column: 2 / 12;
+    grid-row: 2 / 12;
+}
+
+.todo {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    position: relative;
+
+    &:hover {
+        .todo-actions {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+.todo-text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    cursor: pointer;
+    
+    &.complete {
+        color: var(--darkGrey);
+        text-decoration: line-through;
+    }
+}
+
+.todo-title {
+    font-weight: 400;
+}
+
+.todo-desc {
+    font-size: 0.875rem;
+    color: var(--darkGrey);   
+}
+
+.todo-priority {
+    padding: 0.1rem 0.5rem;
+    font-size: 0.8rem;
+    align-self: flex-start;
+    border-radius: 4px;
+    color: var(--white);
+    margin-top: 0.5rem;
+
+    &.low {
+        background-color: var(--blue);
+    }
+
+    &.medium {
+        background-color: var(--yellow);
+    }
+
+    &.high {
+        background-color: var(--red);
+    }
+}
+
+.todo-actions {
+    margin-left: auto;
+    opacity: 0;
+    visibility: visible;
+    display: flex;
+    gap: 0.3rem;
+
+    .actions-button {
+        /* background-image: url("../images/elipsis.svg"); */
+    }
+}
+
+/* edit view */
+
+.edit-todo {
+    background-color: var(--white);
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-height: 100vh;
+    width: 600px;
+    padding: 1rem;
+    border-left: 1px solid var(--medlightGrey);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    box-shadow: 3px 10px 10px rgba(0,0,0,0.2);
+
+    &.hide {
+        display: none;
+    }
+}
