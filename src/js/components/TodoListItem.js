@@ -1,7 +1,8 @@
 import createUIElement from "../utils/createUIElement";
 import Button from "../utils/Button";
 import Checkbox from "../utils/Checkbox";
-import deleteIcon from "../../images/xmark.svg";
+import deleteIcon from "../../images/delete.svg";
+import editIcon from "../../images/edit.svg";
 
 export const TodoListItem = (todo) => {
     const todoCheckbox = Checkbox("todo-checkbox",{checked: todo.completed});
@@ -23,14 +24,21 @@ export const TodoListItem = (todo) => {
     ]);
 
     const deleteImg = createUIElement("img",{
-        class: "icon delete-todo",
+        class: "icon delete-button",
         src: deleteIcon,
-        alt: "delete project",
+        alt: "delete",
     });
-    const deleteTodoButton = Button("button", "", "delete-todo", {}, [deleteImg]);
+    const editImg = createUIElement("img",{
+        class: "icon edit-button",
+        src: editIcon,
+        alt: "edit",
+    });
+    const deleteTodoButton = Button("button", "", "delete-button", {}, [deleteImg]);
+    const editTodoButton = Button("button", "", "edit-button", {}, [editImg]);
     const todoActionsDiv = createUIElement("div", {
         class: "todo-actions",
     }, [
+        editTodoButton,
         deleteTodoButton,
     ]);
 

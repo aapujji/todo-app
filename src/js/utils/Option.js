@@ -1,7 +1,6 @@
 import createUIElement from "./createUIElement"
 
-const Option = (id, textContent, classNames = "", attributes = {}) => {
-    attributes.id = id;
+const Option = (textContent, classNames = "", attributes = {}) => {
     attributes.textContent = textContent ? textContent : "-- Select --";
     attributes.class = classNames ? `option ${classNames}` : "option";
     const option = createUIElement("option", attributes);

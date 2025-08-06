@@ -10,6 +10,10 @@
     grid-row-start: 3;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
+
+    &.hidden {
+        display: none;
+    }
 }
 
 .modal-header {

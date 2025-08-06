@@ -24,7 +24,7 @@
                 </section>
             </main>
             <div id="modalBackdrop" class="modal-backdrop hidden">
-                <div id="todoDetails" class="modal">
+                <div id="todoDetails" class="modal hidden">
                     <div class="modal-header">
                         <button type="button" class="button icon-button icon-close close-modal">
                             <img class="icon close-modal" src="./images/xmark.svg" alt="close modal">
@@ -37,6 +37,32 @@
                         <p id="modalTodoDueDate"></p>
                         <p id="modalTodoProject"></p>
                     </div>
+                </div>
+                <div id="editTodoModal" class="modal hidden">
+                    <div class="modal-header">
+                        <button type="button" class="button icon-button icon-close close-modal">
+                            <img class="icon close-modal" src="./images/xmark.svg" alt="close modal">
+                        </button>
+                    </div>
+                    <form class="form edit-modal-form">
+                        <h3 id="modalTodoTitle"></h3>
+                        <div class="field">
+                            <input class="input todo-title-input" type="text" name="todoTitle" id="todoTitleInput">
+                        </div>
+                        <div class="field">
+                            <textarea class="textarea todo-desc-textarea" id="todoDescTextarea"></textarea>
+                        </div>
+                        <div class="field">
+                            <input class="input todo-duedate-input" type="date" id="todoDueDateInput">
+                        </div>
+                        <div class="field">
+                            <select class="select todo-priority-select" id="prioritySelect"></select>
+                        </div>
+                        <div class="field">
+                            <select class="select todo-project-select" id="projectSelect"></select>
+                        </div>
+                        <button type="button" class="button save-todo">Save</button>
+                    </div>                    
                 </div>
             </div>
         </div>

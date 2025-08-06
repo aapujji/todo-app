@@ -1,6 +1,6 @@
-import { sidebar, projectH2, addProjectButton, modalBackdrop, showTodoDetailsModal, updateProjectLinks, updateTodoList } from "./dom";
+import { sidebar, projectH2, addProjectButton, modalBackdrop, showTodoDetailsModal, showEditTodoModal, getTodoUpdates, updateProjectLinks, updateTodoList } from "./dom";
 import Input from "./utils/Input";
-import { getData, getProjectTodos, createProject, deleteProject, createTodo, deleteTodo, toggleComplete } from "./modules/data";
+import { getData, getProjectTodos, createProject, deleteProject, createTodo, deleteTodo, toggleComplete, priorityOptions, updateTodo } from "./modules/data";
 import createTodoList from "./components/createTodoList";
 
 const getClosest = (elem, parent) => {
@@ -19,7 +19,7 @@ const handleAddProject = (target) => {
     addProjectButton.classList.remove("hidden");
     const projects = createProject(target.value);
     updateProjectLinks(projects);
-    updateTodoList(projectH2.textContent, []);
+    updateTodoList(target.value, []);
     target.value = "";
 }
 
@@ -61,12 +61,23 @@ const setEventListeners = () => {
             showTodoDetailsModal(todo.dataset.uuid);
         } else if (target.matches(".close-modal")) {
             modalBackdrop.classList.add("hidden");
-        } else if (target.matches(".delete-todo")) {
+            getClosest(target,".modal").classList.add("hidden");
+        } else if (target.matches(".edit-button")) {
+            const todo = getClosest(target, ".todo");
+            const projects = getData().projects;
+            showEditTodoModal(todo.dataset.uuid, priorityOptions, projects);
+        } else if (target.matches(".delete-button")) {
             handleDeleteTodo(target);
         } else if (target.matches(".delete-project")) {
             handleDeleteProject(target);
         } else if (target.matches(".todo-checkbox")) {
             handleCompleteTodo(target);
+        } else if (target.matches(".save-todo")) {
+            console.log(getTodoUpdates());
+            const uuid = getClosest(target, ".modal").dataset.uuid;
+            updateTodo(uuid, getTodoUpdates());
+            modalBackdrop.classList.add("hidden");
+            getClosest(target,".modal").classList.add("hidden");
         }
     });
 

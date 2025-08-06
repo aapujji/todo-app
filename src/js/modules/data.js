@@ -1,5 +1,20 @@
 import todo from "./todo";
 
+export const priorityOptions = [
+    {
+        id: 1,
+        name: "Priority 1",
+    },
+    {
+        id: 2,
+        name: "Priority 2",
+    },
+    {
+        id: 3,
+        name: "Priority 3",
+    },
+];
+
 export const setData = (key, data) => {
     localStorage.setItem(key, JSON.stringify(data));
 }
@@ -98,23 +113,10 @@ export const toggleComplete = (uuid) => {
     setData("todos", todos);
 }
 
-// export const updateTodo = (uuid, newTodo) => {
-//     const data = getData();
-//     const todos = data.todos;
-//     const todo = todos.find(item => item.id === uuid);
-//     ({
-//         title,
-//         description,
-//         completed,
-//         dueDate,
-//         priority,
-//         project
-//     } = newTodo);
-
-//     if (title) todo.title = title;
-//     if (description) todo.description = description;
-//     if (completed && completed !== todo.completed) todo.completed = !todo.completed;
-//     if () 
-
-//     return todo;
-// }
+export const updateTodo = (uuid, updates) => {
+    const data = getData();
+    const todos = data.todos;
+    const todo = todos.find(item => item.id === uuid);
+    Object.assign(todo, updates);
+    setData("todos", todos);
+}

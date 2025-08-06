@@ -67,8 +67,12 @@
     display: flex;
     gap: 0.3rem;
 
-    .actions-button {
-        /* background-image: url("../images/elipsis.svg"); */
+    .button {
+        padding: 0.2rem;
+
+        &:hover {
+            background-color: var(--mediumGrey);
+        }
     }
 }
 

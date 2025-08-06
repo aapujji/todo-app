@@ -1,6 +1,5 @@
-import { getData, setData } from "../modules/data";
-import { updateProjectLinks, updateTodoList } from "../dom";
-import { deleteTodo } from "./deleteTodo";
+import { getData, setData, deleteTodo } from "../modules/data";
+import { updateProjectLinks } from "../dom";
 
 export const deleteProject = (project) => { 
     const data = getData();
