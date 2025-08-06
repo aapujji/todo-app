@@ -1,4 +1,16 @@
-import { initializeApp } from './default';
-import '../css/styles.css';
+import { getData } from "./modules/data";
+import { updateTodoList } from './dom';
+import { updateProjectLinks } from "./dom";
+import setEventListeners from "./events";
+import '../css/app.css';
 
-initializeApp();
+const data = getData();
+const projects = data.projects;
+const activeProject = projects[0];
+const todosData = data.todos;
+const activeTodos = todosData.filter(todo => todo.project === activeProject);
+
+updateProjectLinks(projects);
+updateTodoList(activeProject, activeTodos);
+
+setEventListeners();
