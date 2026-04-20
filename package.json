@@ -15,6 +15,8 @@
     "dev": "webpack serve --config webpack.dev.js"
   },
   "dependencies": {
-    "date-fns": "^4.1.0"
+    "date-fns": "^4.1.0",
+    "source-map-loader": "^5.0.0",
+    "ts-loader": "^9.5.7"
   }
 }
